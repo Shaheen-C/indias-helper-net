@@ -8,51 +8,52 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Get It Done Brand Colors */
+    --brand-ivory: 60 100% 97.6%; /* #FFFCEF */
+    --brand-denim: 204 40% 55.3%; /* #659BB9 */
+    --brand-denim-dark: 204 45% 45%;
+    --brand-denim-light: 204 35% 70%;
+    
+    /* Design System based on brand colors */
+    --background: 60 100% 97.6%; /* Ivory Cream */
+    --foreground: 204 45% 25%; /* Dark Denim for text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 60 100% 97.6%;
+    --card-foreground: 204 45% 25%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 60 100% 97.6%;
+    --popover-foreground: 204 45% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 204 40% 55.3%; /* Vintage Denim */
+    --primary-foreground: 60 100% 97.6%; /* Ivory text on denim */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 204 20% 90%;
+    --secondary-foreground: 204 45% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 204 15% 92%;
+    --muted-foreground: 204 25% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 204 30% 85%;
+    --accent-foreground: 204 45% 25%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 60 100% 97.6%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 204 20% 85%;
+    --input: 204 20% 85%;
+    --ring: 204 40% 55.3%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Sidebar colors matching brand */
+    --sidebar-background: 204 40% 55.3%; /* Vintage Denim */
+    --sidebar-foreground: 60 100% 97.6%; /* Ivory text */
+    --sidebar-primary: 60 100% 97.6%;
+    --sidebar-primary-foreground: 204 40% 55.3%;
+    --sidebar-accent: 204 45% 45%;
+    --sidebar-accent-foreground: 60 100% 97.6%;
+    --sidebar-border: 204 35% 50%;
+    --sidebar-ring: 60 100% 97.6%;
   }
 
   .dark {
