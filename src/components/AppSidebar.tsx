@@ -1,5 +1,7 @@
-import { Home, HelpCircle, Users, UserPlus, Info, LogIn } from "lucide-react";
+import { Home, HelpCircle, Users, UserPlus, Info, LogIn, User } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -11,18 +13,20 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-const navigationItems = [
-  { title: "Home", url: "/", icon: Home },
-  { title: "How It Works", url: "/how-it-works", icon: Info },
-  { title: "Why Us", url: "/why-us", icon: Users },
-  { title: "Become a Helper", url: "/become-helper", icon: UserPlus },
-  { title: "FAQ", url: "/faq", icon: HelpCircle },
-  { title: "Sign In", url: "/signin", icon: LogIn },
-];
-
 export function AppSidebar() {
   const { state } = useSidebar();
+  const { user, logout } = useAuth();
   const isCollapsed = state === "collapsed";
+
+  const navigationItems = [
+    { title: "Home", url: "/", icon: Home },
+    { title: "How It Works", url: "/how-it-works", icon: Info },
+    { title: "Why Us", url: "/why-us", icon: Users },
+    { title: "Become a Helper", url: "/become-helper", icon: UserPlus },
+    { title: "FAQ", url: "/faq", icon: HelpCircle },
+    ...(user ? [{ title: "Profile", url: "/profile", icon: User }] : []),
+    ...(user ? [] : [{ title: "Sign In", url: "/signin", icon: LogIn }]),
+  ];
 
   return (
     <Sidebar className={isCollapsed ? "w-16" : "w-64"} collapsible="icon">
@@ -71,7 +75,7 @@ export function AppSidebar() {
         </SidebarGroup>
 
         {/* Bottom CTA */}
-        {!isCollapsed && (
+        {!isCollapsed && !user && (
           <div className="mt-auto p-4 border-t border-sidebar-border">
             <div className="bg-sidebar-accent/20 rounded-lg p-3 text-center">
               <p className="text-sidebar-foreground text-xs mb-2">Ready to get started?</p>
@@ -81,6 +85,26 @@ export function AppSidebar() {
               >
                 Sign Up
               </NavLink>
+            </div>
+          </div>
+        )}
+        
+        {/* User Section */}
+        {!isCollapsed && user && (
+          <div className="mt-auto p-4 border-t border-sidebar-border">
+            <div className="bg-sidebar-accent/20 rounded-lg p-3">
+              <p className="text-sidebar-foreground text-sm font-medium mb-1">
+                Welcome, {user.firstName}!
+              </p>
+              <p className="text-sidebar-foreground/70 text-xs mb-3">{user.email}</p>
+              <Button
+                onClick={logout}
+                variant="outline"
+                size="sm"
+                className="w-full text-xs"
+              >
+                Sign Out
+              </Button>
             </div>
           </div>
         )}

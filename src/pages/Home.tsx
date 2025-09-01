@@ -2,8 +2,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Search, Clock, Shield, Star } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+  const { user } = useAuth();
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -19,12 +23,25 @@ const Home = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="px-8 py-3 text-lg">
-              Find a Helper
-            </Button>
-            <Button variant="outline" size="lg" className="px-8 py-3 text-lg">
-              Become a Helper
-            </Button>
+            {user ? (
+              <>
+                <Button size="lg" className="px-8 py-3 text-lg">
+                  Find a Helper
+                </Button>
+                <Button variant="outline" size="lg" className="px-8 py-3 text-lg">
+                  <Link to="/become-helper">Become a Helper</Link>
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button size="lg" className="px-8 py-3 text-lg" asChild>
+                  <Link to="/signup">Find a Helper</Link>
+                </Button>
+                <Button variant="outline" size="lg" className="px-8 py-3 text-lg" asChild>
+                  <Link to="/become-helper">Become a Helper</Link>
+                </Button>
+              </>
+            )}
           </div>
 
           {/* Trust Indicators */}
@@ -137,11 +154,17 @@ const Home = () => {
             Join thousands of satisfied customers across India who trust Get It Done for their daily needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg" className="px-8 py-3 text-lg">
-              Post Your First Task
-            </Button>
+            {user ? (
+              <Button variant="secondary" size="lg" className="px-8 py-3 text-lg">
+                Post Your First Task
+              </Button>
+            ) : (
+              <Button variant="secondary" size="lg" className="px-8 py-3 text-lg" asChild>
+                <Link to="/signup">Post Your First Task</Link>
+              </Button>
+            )}
             <Button variant="outline" size="lg" className="px-8 py-3 text-lg border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-              Learn More
+              <Link to="/how-it-works">Learn More</Link>
             </Button>
           </div>
         </div>
