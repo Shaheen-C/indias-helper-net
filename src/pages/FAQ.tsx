@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { HelpCircle, MessageCircle, Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { BackButton } from "@/components/BackButton";
 
 const FAQ = () => {
   const generalFAQs = [
@@ -96,6 +97,11 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-brand-cream">
+      {/* Back Button */}
+      <div className="px-4 pt-8">
+        <BackButton />
+      </div>
+
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">

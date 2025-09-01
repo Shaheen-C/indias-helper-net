@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { BackButton } from "@/components/BackButton";
 
 const BecomeHelper = () => {
   const benefits = [
@@ -64,6 +65,11 @@ const BecomeHelper = () => {
 
   return (
     <div className="min-h-screen bg-brand-cream">
+      {/* Back Button */}
+      <div className="px-4 pt-8">
+        <BackButton />
+      </div>
+
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">

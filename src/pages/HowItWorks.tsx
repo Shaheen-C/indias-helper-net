@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Search, UserCheck, MessageSquare, CheckCircle, ArrowRight } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
 
 const HowItWorks = () => {
   const steps = [
@@ -32,6 +33,11 @@ const HowItWorks = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Back Button */}
+      <div className="px-8 pt-8">
+        <BackButton />
+      </div>
+
       {/* Header */}
       <section className="px-8 py-16 text-center">
         <div className="max-w-4xl mx-auto">
